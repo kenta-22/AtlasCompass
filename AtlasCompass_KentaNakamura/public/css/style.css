@@ -16,14 +16,21 @@ li {
   list-style: none;
 }
 
-/* ログイン */
+/* ログイン、新規登録 */
 .rounded-custom {
   border-radius: 10px;
 }
 
 .w-35-custom {
   width: 35%;
-  ;
+}
+
+.w-33-custom {
+  width: 33%;
+}
+
+.radio-btn {
+  vertical-align: middle;
 }
 
 /* サイドバー */
