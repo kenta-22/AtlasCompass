@@ -21,6 +21,10 @@ li {
   border-radius: 10px;
 }
 
+.w-45-custom {
+  width: 45%;
+}
+
 .w-35-custom {
   width: 35%;
 }
@@ -31,6 +35,11 @@ li {
 
 .radio-btn {
   vertical-align: middle;
+}
+
+.error_message {
+  color: red;
+  font-size: 12px;
 }
 
 /* サイドバー */

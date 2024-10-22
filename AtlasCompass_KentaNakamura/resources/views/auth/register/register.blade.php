@@ -22,13 +22,27 @@
             <div class="bg-white border rounded-custom shadow w-35-custom vh-75 border p-4">
                 <div class="register_form">
                     <div class="d-flex mt-3" style="justify-content:space-between">
-                        <div class="w-50">
+                        <div class="w-45-custom">
+
+                            @if($errors->has('over_name'))
+                            <div class="error-message">
+                                <p>{!! $errors->first('over_name') !!}</p>
+                            </div>
+                            @endif
+
                             <label class="d-block m-0" style="font-size:13px">姓</label>
                             <div class="border-bottom border-primary w-100">
                                 <input type="text" class="border-0 over_name w-100" name="over_name">
                             </div>
                         </div>
-                        <div class="w-50">
+                        <div class="w-45-custom">
+
+                            @if($errors->has('under_name'))
+                            <div class="error-message">
+                                <p>{!! $errors->first('under_name') !!}</p>
+                            </div>
+                            @endif
+
                             <label class=" d-block m-0" style="font-size:13px">名</label>
                             <div class="border-bottom border-primary w-100">
                                 <input type="text" class="border-0 under_name w-100"
@@ -37,14 +51,28 @@
                         </div>
                     </div>
                     <div class="d-flex mt-3" style="justify-content:space-between">
-                        <div class="w-50">
+                        <div class="w-45-custom">
+
+                            @if($errors->has('over_name_kana'))
+                            <div class="error-message">
+                                <p>{!! $errors->first('over_name_kana') !!}</p>
+                            </div>
+                            @endif
+
                             <label class="d-block m-0" style="font-size:13px">セイ</label>
                             <div class="border-bottom border-primary w-100">
                                 <input type="text" class="border-0 over_name_kana w-100"
                                     name="over_name_kana">
                             </div>
                         </div>
-                        <div class="w-50">
+                        <div class="w-45-custom">
+
+                            @if($errors->has('under_name_kana'))
+                            <div class="error-message">
+                                <p>{!! $errors->first('under_name_kana') !!}</p>
+                            </div>
+                            @endif
+
                             <label class="d-block m-0" style="font-size:13px">メイ</label>
                             <div class="border-bottom border-primary w-100">
                                 <input type="text" class="border-0 under_name_kana w-100"
@@ -53,12 +81,26 @@
                         </div>
                     </div>
                     <div class="mt-3">
+
+                        @if($errors->has('mail_address'))
+                        <div class="error-message">
+                            <p>{!! $errors->first('mail_address') !!}</p>
+                        </div>
+                        @endif
+
                         <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
                         <div class="border-bottom border-primary">
                             <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
                         </div>
                     </div>
                 </div>
+
+                @if($errors->has('sex'))
+                <div class="error-message">
+                    <p>{!! $errors->first('sex') !!}</p>
+                </div>
+                @endif
+
                 <div class="mt-3" style="display:flex; justify-content:space-around;">
                     <div>
                         <input type="radio" name="sex" class="sex radio-btn" value="1">
@@ -74,6 +116,13 @@
                     </div>
                 </div>
                 <div class="mt-3">
+
+                    @if($errors->has('birth_day'))
+                    <div class="error-message">
+                        <p>{!! $errors->first('birth_day') !!}</p>
+                    </div>
+                    @endif
+
                     <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
                     <div style="display:flex; justify-content:space-around;">
                         <div class="w-33-custom">
@@ -166,6 +215,13 @@
                     </div>
                 </div>
                 <div class="mt-3">
+
+                    @if($errors->has('role'))
+                    <div class="error-message">
+                        <p>{!! $errors->first('role') !!}</p>
+                    </div>
+                    @endif
+
                     <label class="d-block m-0" style="font-size:13px">役職</label>
                     <div style="display:flex; justify-content:space-around;">
                         <div>
@@ -198,6 +254,13 @@
                     </div>
                 </div>
                 <div class="mt-3">
+
+                    @if($errors->has('password'))
+                    <div class="error-message">
+                        <p>{!! $errors->first('password') !!}</p>
+                    </div>
+                    @endif
+
                     <label class="d-block m-0" style="font-size:13px">パスワード</label>
                     <div class="border-bottom border-primary">
                         <input type="password" class="border-0 w-100 password" name="password">
@@ -210,8 +273,7 @@
                     </div>
                 </div>
                 <div class="mt-3 text-right">
-                    <input type="submit" class="btn btn-primary register_btn" disabled value="新規登録"
-                        onclick="return confirm('登録してよろしいですか？')">
+                    <input type="submit" class="btn btn-primary register_btn" disabled value="新規登録" onclick="return confirm('登録してよろしいですか？')">
                 </div>
                 <div class="text-center mt-1">
                     <a href="{{ route('loginView') }}">ログインはこちら</a>
