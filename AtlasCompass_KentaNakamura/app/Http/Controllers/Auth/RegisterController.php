@@ -69,6 +69,24 @@ class RegisterController extends Controller
             $birth_day = date('Y-m-d', strtotime($data));
             $subjects = $request->subject;
 
+            // 追加のバリデーション
+            $validator = Validator::make(
+                [
+                    'birth_day' => $birth_day
+                ], [
+                    'birth_day' => 'date | after:2000-01-01 | before:today'
+                ], [
+                    'birth_day.date' => '無効な日付です。',
+                    'birth_day.after' => '日付は2000年1月1日以降を入力してください。',
+                    'birth_day.before' => '日付は本日以前を入力してください。'
+                ]
+            );
+
+            // バリデーション失敗時の処理
+            if($validator->fails()){
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
             $user_get = User::create([
                 'over_name' => $request->over_name,
                 'under_name' => $request->under_name,

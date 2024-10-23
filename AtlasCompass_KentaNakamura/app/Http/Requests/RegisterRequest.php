@@ -74,8 +74,50 @@ class RegisterRequest extends FormRequest
                 'required',
                 'min:8',
                 'max:30',
-                'confirmed' //確認用と一致するかどうか9(class="password_confirmation"のフォームを見る)
+                'confirmed' //確認用と一致するかどうか(name="password_confirmation"のフォームを見る)
             ]
+        ];
+    }
+
+    public function messages(){
+        return [
+            // over_name
+            'over_name.required' => '名前は必ず入力してください。',
+            'over_name.string' => '名前は必ず入力してください。',
+            'over_name.max' => '姓は10文字以内で入力してください。',
+            // under_name
+            'under_name.required' => '名前は必ず入力してください。',
+            'under_name.string' => '名前は必ず入力してください。',
+            'under_name.max' => '名は10文字以内で入力してください。',
+            // over_name_kana
+            'over_name_kana.required' => 'セイは必ず入力してください。',
+            'over_name_kana.string' => 'セイは必ず入力してください。',
+            'over_name_kana.regex' => 'セイはカタカナで入力してください。',
+            'over_name_kana.max' => 'セイは30文字以内で入力してください。',
+            // under_name_kana
+            'under_name_kana.required' => 'メイは必ず入力してください。',
+            'under_name_kana.string' => 'メイは必ず入力してください。',
+            'under_name_kana.regex' => 'メイはカタカナで入力してください。',
+            'under_name_kana.max' => 'メイは30文字以内で入力してください。',
+            // mail_address
+            'mail_address.required' => 'メールアドレスは必ず入力してください。',
+            'mail_address.max' => 'メールアドレスは100文字以内で入力してください。',
+            'mail_address.unique' => 'すでに使用されているメールアドレスです。',
+            'mail_address.email' => '正しいメールアドレス形式で入力してください。',
+            // sex
+            'sex.required' => '性別は必ず選択してください。',
+            'sex.in' => '性別は下記からお選びください。',
+            // old_year
+            // old_month
+            // old_day
+            // role
+            'role.required' => '役職は必ず選択してください。',
+            'role.in' => '役職は下記からお選びください。',
+            // password
+            'password.required' => 'パスワードは必ず入力してください。',
+            'password.min' => 'パスワードは8文字以上で入力してください。',
+            'password.max' => 'パスワードは30文字以内で入力してください。',
+            'password.confirmed' => 'パスワードが一致しません。'
         ];
     }
 }

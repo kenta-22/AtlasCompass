@@ -37,9 +37,12 @@ li {
   vertical-align: middle;
 }
 
-.error_message {
-  color: red;
+.error-message {
   font-size: 12px;
+}
+
+.space {
+  height: 16px;
 }
 
 /* サイドバー */
