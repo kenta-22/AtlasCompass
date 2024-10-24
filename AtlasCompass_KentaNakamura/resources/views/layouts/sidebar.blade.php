@@ -19,13 +19,40 @@
   <div class="d-flex">
     <div class="sidebar">
       @section('sidebar')
-      <p><a href="{{ route('top.show') }}">トップ</a></p>
-      <p><a href="/logout">ログアウト</a></p>
-      <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
-      <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-      <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
-      <p><a href="{{ route('post.show') }}">掲示板</a></p>
-      <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+      <p>
+        <a href="{{ route('top.show') }}">
+          <i class="fa-solid fa-house fa-fw" style="color: #ffffff;"></i>トップ
+        </a>
+      </p>
+      <p>
+        <a href="/logout">
+          <i class="fa-solid fa-right-from-bracket fa-fw" style="color: #ffffff;"></i>ログアウト</a>
+      </p>
+      <p>
+        <a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">
+          <i class="fa-regular fa-calendar fa-fw" style="color: #ffffff;"></i>スクール予約
+        </a>
+      </p>
+      <p>
+        <a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">
+          <i class="fa-regular fa-calendar-check fa-fw" style="color: #ffffff;"></i>スクール予約確認
+        </a>
+      </p>
+      <p>
+        <a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">
+          <i class="fa-regular fa-calendar-plus fa-fw" style="color: #ffffff;"></i>スクール枠登録
+        </a>
+      </p>
+      <p>
+        <a href="{{ route('post.show') }}">
+          <i class="fa-regular fa-message fa-fw" style="color: #ffffff;"></i>掲示板
+        </a>
+      </p>
+      <p>
+        <a href="{{ route('user.show') }}">
+          <i class="fa-solid fa-users fa-fw" style="color: #ffffff;"></i>ユーザー検索
+        </a>
+      </p>
       @show
     </div>
     <div class="main-container">
@@ -33,6 +60,8 @@
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/11efa6a52c.js" crossorigin="anonymous"></script>
   <script src="{{ asset('js/register.js') }}" rel="stylesheet"></script>
   <script src="{{ asset('js/bulletin.js') }}" rel="stylesheet"></script>
   <script src="{{ asset('js/user_search.js') }}" rel="stylesheet"></script>

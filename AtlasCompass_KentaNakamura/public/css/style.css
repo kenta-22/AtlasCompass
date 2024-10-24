@@ -47,10 +47,11 @@ li {
 
 /* サイドバー */
 .sidebar {
-  width: 150px;
+  min-width: 170px;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
+  padding: 20px 10px;
 }
 
 .main-container {
@@ -59,6 +60,10 @@ li {
 
 .sidebar p a {
   color: #FFF;
+}
+
+.sidebar p a i {
+  margin-right: 3px;
 }
 
 /* トップページ */
