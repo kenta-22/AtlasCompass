@@ -83,4 +83,11 @@ class User extends Authenticatable
     public function likePostId(){
         return Like::where('like_user_id', Auth::id());
     }
+
+    // Admin権限
+    public function isAdmin(){
+        $adminRoles = [1,2,3]; //role=1,2,3にadmin権限付与
+
+        return in_array($this->role, $adminRoles);
+    }
 }

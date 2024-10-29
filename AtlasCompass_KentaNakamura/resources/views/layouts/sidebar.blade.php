@@ -33,8 +33,7 @@
           <i class="fa-regular fa-calendar fa-fw" style="color: #ffffff;"></i>スクール予約
         </a>
       </p>
-      @if(Auth::user()->role == '4') <!-- '4'がint型なので、「==」とする。※文字列型なら「===」である -->
-      @else
+      @can('admin')
       <p>
         <a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">
           <i class="fa-regular fa-calendar-check fa-fw" style="color: #ffffff;"></i>スクール予約確認
@@ -45,7 +44,7 @@
           <i class="fa-regular fa-calendar-plus fa-fw" style="color: #ffffff;"></i>スクール枠登録
         </a>
       </p>
-      @endif
+      @endcan
       <p>
         <a href="{{ route('post.show') }}">
           <i class="fa-regular fa-message fa-fw" style="color: #ffffff;"></i>掲示板
