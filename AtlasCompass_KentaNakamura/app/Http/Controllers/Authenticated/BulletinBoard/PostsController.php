@@ -15,6 +15,7 @@ use Auth;
 
 class PostsController extends Controller
 {
+    // ポスト一覧、検索
     public function show(Request $request){
         $posts = Post::with('user', 'postComments')->get();
         $categories = MainCategory::get();
@@ -38,16 +39,19 @@ class PostsController extends Controller
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
 
+    // ポスト詳細
     public function postDetail($post_id){
         $post = Post::with('user', 'postComments')->findOrFail($post_id);
         return view('authenticated.bulletinboard.post_detail', compact('post'));
     }
 
+    // ポスト投稿画面
     public function postInput(){
         $main_categories = MainCategory::get();
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
     }
 
+    // ポスト投稿
     public function postCreate(PostFormRequest $request){
         $post = Post::create([
             'user_id' => Auth::id(),
@@ -57,6 +61,7 @@ class PostsController extends Controller
         return redirect()->route('post.show');
     }
 
+    // ポスト編集
     public function postEdit(Request $request){
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
@@ -65,15 +70,19 @@ class PostsController extends Controller
         return redirect()->route('post.detail', ['id' => $request->post_id]);
     }
 
+    // ポスト削除
     public function postDelete($id){
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
     }
+
+
     public function mainCategoryCreate(Request $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');
     }
 
+    // コメント投稿
     public function commentCreate(Request $request){
         PostComment::create([
             'post_id' => $request->post_id,
