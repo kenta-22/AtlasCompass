@@ -11,6 +11,9 @@ use App\Models\Posts\PostComment;
 use App\Models\Posts\Like;
 use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
+use App\Http\Requests\BulletinBoard\PostEditRequest;
+
+
 use Auth;
 
 class PostsController extends Controller
@@ -36,6 +39,12 @@ class PostsController extends Controller
             $posts = Post::with('user', 'postComments')
             ->where('user_id', Auth::id())->get();
         }
+
+        foreach($posts as $post){
+            $post->likes_count = $like->likeCounts($post->id);
+            $post->comments_count = $post_comment->commentCounts($post->id);
+        }
+
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
 
@@ -62,7 +71,7 @@ class PostsController extends Controller
     }
 
     // ポスト編集
-    public function postEdit(Request $request){
+    public function postEdit(PostFormRequest $request){
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
             'post' => $request->post_body,
