@@ -56,7 +56,7 @@ class PostsController extends Controller
 
     // ポスト投稿画面
     public function postInput(){
-        $main_categories = MainCategory::get();
+        $main_categories = MainCategory::with('subCategories')->get();
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
     }
 
