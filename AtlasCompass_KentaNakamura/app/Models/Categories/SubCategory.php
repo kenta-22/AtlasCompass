@@ -3,7 +3,7 @@
 namespace App\Models\Categories;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Categories\MainCategory;
+use App\Models\Categories\SubCategory;
 
 class SubCategory extends Model
 {
