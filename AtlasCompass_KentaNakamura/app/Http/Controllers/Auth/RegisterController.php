@@ -62,30 +62,30 @@ class RegisterController extends Controller
     {
         DB::beginTransaction();
         try{
-            $old_year = $request->old_year;
-            $old_month = $request->old_month;
-            $old_day = $request->old_day;
-            $data = $old_year . '-' . $old_month . '-' . $old_day;
-            $birth_day = date('Y-m-d', strtotime($data));
+            // $old_year = $request->old_year;
+            // $old_month = $request->old_month;
+            // $old_day = $request->old_day;
+            // $data = $old_year . '-' . $old_month . '-' . $old_day;
+            // $birth_day = date('Y-m-d', strtotime($data));
             $subjects = $request->subject;
 
-            // 追加のバリデーション
-            $validator = Validator::make(
-                [
-                    'birth_day' => $birth_day
-                ], [
-                    'birth_day' => 'date | after:2000-01-01 | before:today'
-                ], [
-                    'birth_day.date' => '無効な日付です。',
-                    'birth_day.after' => '日付は2000年1月1日以降を入力してください。',
-                    'birth_day.before' => '日付は本日以前を入力してください。'
-                ]
-            );
+            // // 追加のバリデーション
+            // $validator = Validator::make(
+            //     [
+            //         'birth_day' => $birth_day
+            //     ], [
+            //         'birth_day' => 'date | after:2000-01-01 | before:today'
+            //     ], [
+            //         'birth_day.date' => '無効な日付です。',
+            //         'birth_day.after' => '日付は2000年1月1日以降を入力してください。',
+            //         'birth_day.before' => '日付は本日以前を入力してください。'
+            //     ]
+            // );
 
-            // バリデーション失敗時の処理
-            if($validator->fails()){
-                return redirect()->back()->withErrors($validator)->withInput();
-            }
+            // // バリデーション失敗時の処理
+            // if($validator->fails()){
+            //     return redirect()->back()->withErrors($validator)->withInput();
+            // }
 
             $user_get = User::create([
                 'over_name' => $request->over_name,
@@ -94,7 +94,7 @@ class RegisterController extends Controller
                 'under_name_kana' => $request->under_name_kana,
                 'mail_address' => $request->mail_address,
                 'sex' => $request->sex,
-                'birth_day' => $birth_day,
+                'birth_day' => $request->birth_day,
                 'role' => $request->role,
                 'password' => bcrypt($request->password)
             ]);

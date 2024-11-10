@@ -16,6 +16,19 @@ class RegisterRequest extends FormRequest
         return true;
     }
 
+    public function getValidatorInstance(){
+        $old_year = $this->input('old_year');
+        $old_month = $this->input('old_month');
+        $old_day = $this->input('old_day');
+
+        $date = $old_year . '-' . $old_month . '-' . $old_day;
+        $birth_day = date('Y-m-d', strtotime($date));
+
+        $this->merge(['birth_day' => $birth_day]);
+
+        return parent::getValidatorInstance();
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -53,18 +66,11 @@ class RegisterRequest extends FormRequest
                 'unique:users,mail_address',
                 'email'
             ],
-            'sex' => [
+            'birth_day' => [
                 'required',
-                'in:1,2,3'
-            ],
-            'old_year' => [
-                'required',
-            ],
-            'old_month' => [
-                'required',
-            ],
-            'old_day' => [
-                'required',
+                'date',
+                'after:2000-01-01',
+                'before:today'
             ],
             'role' => [
                 'required',
@@ -107,9 +113,11 @@ class RegisterRequest extends FormRequest
             // sex
             'sex.required' => '性別は必ず選択してください。',
             'sex.in' => '性別は下記からお選びください。',
-            // old_year
-            // old_month
-            // old_day
+            // birth_day
+            'birth_day.required' => '生年月日は必ず選択してください。',
+            'birth_day.date' => '無効な日付です。',
+            'birth_day.after' => '生年月日は2000年1月1日以降を選択してください。',
+            'birth_day.before' => '生年月日は今日以前を選択してください。',
             // role
             'role.required' => '役職は必ず選択してください。',
             'role.in' => '役職は下記からお選びください。',
