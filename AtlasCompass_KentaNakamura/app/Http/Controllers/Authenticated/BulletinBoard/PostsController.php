@@ -22,7 +22,7 @@ class PostsController extends Controller
     // ポスト一覧、検索
     public function show(Request $request){
         $posts = Post::with('user', 'postComments')->get();
-        $categories = MainCategory::get();
+        $categories = MainCategory::with('subCategories')->get();
         $like = new Like;
         $post_comment = new Post;
         if(!empty($request->keyword)){
@@ -90,7 +90,7 @@ class PostsController extends Controller
     // メインカテゴリー
     public function mainCategoryCreate(MainCategoryRequest $request){
         MainCategory::create([
-            'main_category' => $request->main_category_name
+            'main_category' => $request->main_category
         ]);
         return redirect()->route('post.input');
     }
@@ -99,7 +99,7 @@ class PostsController extends Controller
     public function subCategoryCreate(SubCategoryRequest $request){
         SubCategory::create([
             'main_category_id' => $request->main_category_id,
-            'sub_category' => $request->sub_category_name
+            'sub_category' => $request->sub_category
         ]);
         return redirect()->route('post.input');
     }
