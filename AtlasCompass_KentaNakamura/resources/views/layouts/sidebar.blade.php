@@ -57,7 +57,7 @@
       </p>
       @show
     </div>
-    <div class="main-container">
+    <div class="main-container" style="padding-left:170px;">
       @yield('content')
     </div>
   </div>

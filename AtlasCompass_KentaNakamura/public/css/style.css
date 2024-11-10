@@ -52,6 +52,7 @@ li {
   background-color: #03AAD2;
   font-weight: bold;
   padding: 20px 10px;
+  position: fixed;
 }
 
 .main-container {
