@@ -144,7 +144,6 @@ li {
 /* 掲示板 */
 .sub_categories {
   /* display: none; */
-  display: inline-block;
 }
 
 .post_create_area {

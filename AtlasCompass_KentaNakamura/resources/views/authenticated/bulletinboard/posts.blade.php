@@ -40,9 +40,9 @@
           <span>{{ $category->main_category }}</span>
           <ul>
             @foreach($category->subCategories as $subCategory)
-            <li class="sub_categories category_btn ml-3">
-              <span>{{ $subCategory->sub_category }}</span>
-            </li><br>
+            <li class="sub_categories ml-3">
+              <input type="submit" name="sub_category" class="category_btn" value="{{ $subCategory->sub_category }}" form="postSearchRequest">
+            </li>
             @endforeach
           </ul>
         </li>

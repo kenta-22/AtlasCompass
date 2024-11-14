@@ -28,7 +28,10 @@ class PostsController extends Controller
         if(!empty($request->keyword)){
             $posts = Post::with('user', 'postComments')
             ->where('post_title', 'like', '%'.$request->keyword.'%')
-            ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
+            ->orWhere('post', 'like', '%'.$request->keyword.'%')
+            ->orWhereHas('subCategories', function ($query) use ($request) {
+                $query->where('sub_category', $request->keyword);
+            })->get();
         }else if($request->category_word){
             $sub_category = $request->category_word;
             $posts = Post::with('user', 'postComments')->get();
@@ -39,6 +42,11 @@ class PostsController extends Controller
         }else if($request->my_posts){
             $posts = Post::with('user', 'postComments')
             ->where('user_id', Auth::id())->get();
+        }else if($request->sub_category){
+            $posts = Post::with('user', 'postComments')
+            ->whereHas('subCategories', function ($query) use ($request) {
+                $query->where('sub_category', $request->sub_category);
+            })->get();
         }
 
         foreach($posts as $post){
