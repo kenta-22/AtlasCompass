@@ -95,6 +95,12 @@
           </div>
           <div class="selected_engineer">
             <label>選択科目</label>
+            @foreach ($subjects as $subject)
+            <div class="w-25">
+              <label>{{ $subject->subject }}</label>
+              <input type="checkbox" name="subject[]" value="{{ $subject->id }}" class="radio-btn">
+            </div>
+            @endforeach
           </div>
         </div>
       </div>
