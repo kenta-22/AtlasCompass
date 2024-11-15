@@ -98,7 +98,7 @@
             @foreach ($subjects as $subject)
             <div class="w-25">
               <label>{{ $subject->subject }}</label>
-              <input type="checkbox" name="subject[]" value="{{ $subject->id }}" class="radio-btn">
+              <input type="checkbox" name="subject" form="userSearchRequest" value="{{ $subject->id }}" class="radio-btn">
             </div>
             @endforeach
           </div>
