@@ -31,14 +31,16 @@ class CalendarView{
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
+
     $weeks = $this->getWeeks();
+
     foreach($weeks as $week){
       $html[] = '<tr class="'.$week->getClassName().'">';
 
       $days = $week->getDays();
       foreach($days as $day){
         $startDay = $this->carbon->copy()->format("Y-m-01");
-        $toDay = $this->carbon->copy()->format("Y-m-d");
+        $toDay = $this->carbon->format('Y-m-d');
 
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
           $html[] = '<td class="past-day calendar-td">';
@@ -57,7 +59,13 @@ class CalendarView{
             $reservePart = "リモ3部";
           }
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
+            if($reservePart == "リモ1部"){
+              $html[] = '1部参加';
+            }else if($reservePart == "リモ2部"){
+              $html[] = '2部参加';
+            }else if($reservePart == "リモ3部"){
+              $html[] = '3部参加';
+            }
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
             $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
