@@ -3,6 +3,7 @@ namespace App\Calendars\Admin;
 
 use Carbon\Carbon;
 use App\Models\Calendars\ReserveSettings;
+use Illuminate\Support\Facades\DB;
 
 class CalendarWeekDay{
   protected $carbon;
@@ -29,15 +30,33 @@ class CalendarWeekDay{
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
 
-    $html[] = '<div class="text-left">';
+    $html[] = '<div class="text-left d-flex flex-column">';
     if($one_part){
-      $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+      $reserveCount = DB::table('reserve_setting_users')
+        ->where('reserve_setting_id', $one_part->id)
+        ->count();
+      $html[] = '<div>';
+      $html[] = '<a class="day_part m-0 pt-1" href="' . route('calendar.admin.detail',['date' => $ymd, 'part' => $one_part->setting_part]) . '">1部</a>';
+      $html[] = '<p class="d-inline ml-3" style="font-size:12px;">'. $reserveCount .'</p>';
+      $html[] = '</div>';
     }
     if($two_part){
-      $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+      $reserveCount = DB::table('reserve_setting_users')
+        ->where('reserve_setting_id', $two_part->id)
+        ->count();
+      $html[] = '<div>';
+      $html[] = '<a class="day_part m-0 pt-1" href="' . route('calendar.admin.detail',['date' => $ymd, 'part' => $two_part->setting_part]) . '">2部</a>';
+      $html[] = '<p class="d-inline ml-3" style="font-size:12px;">'. $reserveCount .'</p>';
+      $html[] = '</div>';
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+      $reserveCount = DB::table('reserve_setting_users')
+        ->where('reserve_setting_id', $three_part->id)
+        ->count();
+      $html[] = '<div>';
+      $html[] = '<a class="day_part m-0 pt-1" href="' . route('calendar.admin.detail',['date' => $ymd, 'part' => $three_part->setting_part]) . '">3部</a>';
+      $html[] = '<p class="d-inline ml-3" style="font-size:12px;">'. $reserveCount .'</p>';
+      $html[] = '</div>';
     }
     $html[] = '</div>';
 
