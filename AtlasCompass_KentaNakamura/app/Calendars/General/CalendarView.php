@@ -60,11 +60,11 @@ class CalendarView{
           }
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
             if($reservePart == "リモ1部"){
-              $html[] = '1部参加';
+              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px;">1部参加</p>';
             }else if($reservePart == "リモ2部"){
-              $html[] = '2部参加';
+              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px;">2部参加</p>';
             }else if($reservePart == "リモ3部"){
-              $html[] = '3部参加';
+              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px;">3部参加</p>';
             }
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
