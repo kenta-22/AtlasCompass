@@ -37,7 +37,7 @@ class CalendarWeekDay{
         ->count();
       $html[] = '<div>';
       $html[] = '<a class="day_part m-0 pt-1" href="' . route('calendar.admin.detail',['date' => $ymd, 'part' => $one_part->setting_part]) . '">1部</a>';
-      $html[] = '<p class="d-inline ml-3" style="font-size:12px;">'. $reserveCount .'</p>';
+      $html[] = '<p class="d-inline ml-3" style="font-size:12px; color:#212529;">'. $reserveCount .'</p>';
       $html[] = '</div>';
     }
     if($two_part){
@@ -46,7 +46,7 @@ class CalendarWeekDay{
         ->count();
       $html[] = '<div>';
       $html[] = '<a class="day_part m-0 pt-1" href="' . route('calendar.admin.detail',['date' => $ymd, 'part' => $two_part->setting_part]) . '">2部</a>';
-      $html[] = '<p class="d-inline ml-3" style="font-size:12px;">'. $reserveCount .'</p>';
+      $html[] = '<p class="d-inline ml-3" style="font-size:12px; color:#212529;">'. $reserveCount .'</p>';
       $html[] = '</div>';
     }
     if($three_part){
@@ -55,7 +55,7 @@ class CalendarWeekDay{
         ->count();
       $html[] = '<div>';
       $html[] = '<a class="day_part m-0 pt-1" href="' . route('calendar.admin.detail',['date' => $ymd, 'part' => $three_part->setting_part]) . '">3部</a>';
-      $html[] = '<p class="d-inline ml-3" style="font-size:12px;">'. $reserveCount .'</p>';
+      $html[] = '<p class="d-inline ml-3" style="font-size:12px; color:#212529;">'. $reserveCount .'</p>';
       $html[] = '</div>';
     }
     $html[] = '</div>';

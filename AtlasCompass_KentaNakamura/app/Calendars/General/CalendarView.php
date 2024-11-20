@@ -43,7 +43,7 @@ class CalendarView{
         $toDay = $this->carbon->format('Y-m-d');
 
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="past-day calendar-td">';
+          $html[] = '<td class="past-day calendar-td '.$day->getClassName().'">';
         }else{
           $html[] = '<td class="calendar-td '.$day->getClassName().'">';
         }
@@ -60,11 +60,11 @@ class CalendarView{
           }
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
             if($reservePart == "リモ1部"){
-              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px;">1部参加</p>';
+              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px; color:#212529;">1部参加</p>';
             }else if($reservePart == "リモ2部"){
-              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px;">2部参加</p>';
+              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px; color:#212529;">2部参加</p>';
             }else if($reservePart == "リモ3部"){
-              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px;">3部参加</p>';
+              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px; color:#212529;">3部参加</p>';
             }
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
