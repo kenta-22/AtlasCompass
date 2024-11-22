@@ -3,7 +3,6 @@
 @section('content')
 <div class="board_area w-100 border m-auto d-flex">
   <div class="post_view w-75 mt-5">
-    <p class="w-75 m-auto">投稿一覧</p>
     @foreach($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
@@ -25,15 +24,19 @@
     </div>
     @endforeach
   </div>
-  <div class="other_area border w-25">
-    <div class="border m-4">
-      <div class=""><a href="{{ route('post.input') }}">投稿</a></div>
-      <div class="">
-        <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
-        <input type="submit" value="検索" form="postSearchRequest">
+  <div class="other_area w-25">
+    <div class="mt-5 mr-5">
+      <div class="mb-3">
+        <a class="btn post-btn" href="{{ route('post.input') }}">投稿</a>
       </div>
-      <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
-      <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
+      <div class="mb-3">
+        <input class="search-area" type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
+        <input class="search-btn" type="submit" value="検索" form="postSearchRequest">
+      </div>
+      <div class="mb-3">
+        <input type="submit" name="like_posts" class="btn my-like-btn" value="いいねした投稿" form="postSearchRequest">
+        <input type="submit" name="my_posts" class="btn my-post-btn" value="自分の投稿" form="postSearchRequest">
+      </div>
       <ul>
         @foreach($categories as $category)
         <li class="main_categories" category_id="{{ $category->id }}">

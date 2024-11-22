@@ -249,6 +249,45 @@ li {
 }
 
 /* 掲示板　カテゴリー */
+.post-btn {
+  background-color: #4DA6CE !important;
+  border-radius: 0.5rem !important;
+  width: 100%;
+  color: #fff !important;
+}
+
+.search-area {
+  background-color: transparent;
+  border: 1px solid #7B7B7C;
+  border-right: none;
+  border-radius: 0.5rem 0 0 0.5rem;
+  padding: .375rem .75rem;
+}
+
+.search-btn {
+  background-color: #4DA6CE;
+  border: 1px solid #4DA6CE;
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: .375rem .75rem;
+  color: #fff;
+}
+
+.my-like-btn {
+  background-color: #D792AA !important;
+  border-radius: 0.5rem !important;
+  width: 49%;
+  color: #fff !important;
+  float: left;
+}
+
+.my-post-btn {
+  background-color: #E3BE6C !important;
+  border-radius: 0.5rem !important;
+  width: 49%;
+  color: #fff !important;
+  float: right;
+}
+
 .category_area {
   background: #FFF;
   border-radius: 10px;
