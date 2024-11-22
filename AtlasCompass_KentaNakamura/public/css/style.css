@@ -68,6 +68,11 @@ li {
 }
 
 /* トップページ */
+.top-text {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
 .user_status {
   border-radius: 10px;
   background: #FFF;
