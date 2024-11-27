@@ -7,16 +7,16 @@
     <div class="post_area border w-75 m-auto p-3">
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
-      <div class="post_bottom_area d-flex">
-        <div class="d-flex post_status">
+      <div class="post_bottom_area d-flex justify-content-end pr-2">
+        <div class="d-flex post_status gap-5">
           <div class="mr-5">
-            <i class="fa fa-comment"></i><span class="">{{ $post->comments_count->count() }}</span>
+            <i class="fa fa-comment" style="color:#919191;"></i><span class=""> {{ $post->comments_count->count() }}</span>
           </div>
           <div>
             @if(Auth::user()->is_Like($post->id))
-            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{ $post->likes_count }}</span></p>
+            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"> {{ $post->likes_count }}</span></p>
             @else
-            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{ $post->likes_count }}</span></p>
+            <p class="m-0"><i class="fa-regular fa-heart like_btn" post_id="{{ $post->id }}" style="color:#919191;"></i><span class="like_counts{{ $post->id }}"> {{ $post->likes_count }}</span></p>
             @endif
           </div>
         </div>
@@ -24,33 +24,40 @@
     </div>
     @endforeach
   </div>
-  <div class="other_area w-25">
-    <div class="mt-5 mr-5">
+  <div class="other_area w-25 mt-5">
+    <div class="w-75">
       <div class="mb-3">
         <a class="btn post-btn" href="{{ route('post.input') }}">投稿</a>
       </div>
-      <div class="mb-3">
-        <input class="search-area" type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
-        <input class="search-btn" type="submit" value="検索" form="postSearchRequest">
+      <div class="mb-3 d-flex w-100">
+        <input class="search-area w-75" type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
+        <input class="search-btn w-25" type="submit" value="検索" form="postSearchRequest">
       </div>
-      <div class="mb-3">
+      <div class="mb-3 d-flex justify-content-between w-100">
         <input type="submit" name="like_posts" class="btn my-like-btn" value="いいねした投稿" form="postSearchRequest">
         <input type="submit" name="my_posts" class="btn my-post-btn" value="自分の投稿" form="postSearchRequest">
       </div>
-      <ul>
-        @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}">
-          <span>{{ $category->main_category }}</span>
-          <ul>
-            @foreach($category->subCategories as $subCategory)
-            <li class="sub_categories ml-3">
-              <input type="submit" name="sub_category" class="category_btn" value="{{ $subCategory->sub_category }}" form="postSearchRequest">
-            </li>
-            @endforeach
-          </ul>
-        </li>
-        @endforeach
-      </ul>
+      <div class="">
+        <p class="mb-0">カテゴリー検索</p>
+        <div class="accordion" id="myAccordion">
+          @foreach($categories as $category)
+          <div class="accordion-item main_categories" category_id="{{ $category->id }}">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $category->id }}" aria-expanded="true" aria-controls="collapse{{ $category->id }}">
+                {{ $category->main_category }}
+              </button>
+            </h2>
+            <div id="collapse{{ $category->id }}" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+              <div class="accordion-body sub_categories ml-3">
+                @foreach($category->subCategories as $subCategory)
+                <input type="submit" name="sub_category" class="category_btn" value="{{ $subCategory->sub_category }}" form="postSearchRequest">
+                @endforeach
+              </div>
+            </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
     </div>
   </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>

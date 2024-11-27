@@ -270,6 +270,7 @@ li {
   border-radius: 0 0.5rem 0.5rem 0;
   padding: .375rem .75rem;
   color: #fff;
+  cursor: pointer;
 }
 
 .my-like-btn {
@@ -277,7 +278,6 @@ li {
   border-radius: 0.5rem !important;
   width: 49%;
   color: #fff !important;
-  float: left;
 }
 
 .my-post-btn {
@@ -285,7 +285,6 @@ li {
   border-radius: 0.5rem !important;
   width: 49%;
   color: #fff !important;
-  float: right;
 }
 
 .category_area {
@@ -301,17 +300,8 @@ li {
   color: #FFF;
 }
 
-.category_btn {
-  font-size: 12px;
-  border-radius: 5px;
-  padding: 0 5px;
-  border: none;
-  background: #999;
-  color: #FFF;
-}
-
-.main_categories span,
-.sub_categories li input {
+.main_categories h2 button,
+.sub_categories input {
   list-style: none;
   cursor: pointer;
 }
@@ -355,4 +345,55 @@ li {
 
 .subject_inner {
   display: none;
+}
+
+/* アコーディオン */
+.accordion-item {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.accordion-header {
+  border: none !important;
+  border-bottom: 1px solid #7B7B7C !important;
+}
+
+.accordion-button {
+  background-color: transparent !important;
+  color: #212529 !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 1.5rem 0.25rem 0.3rem 0 !important;
+}
+
+.accordion-button::after {
+  background-image: url('../image/accordion_arrow.svg') !important;
+  transform: rotate(0deg) !important;
+  transition: transform 0.3s !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(180deg) !important;
+}
+
+.accordion-button:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.accordion-body {
+  padding: 0 1.8rem 0 1.25rem !important;
+}
+
+.category_btn {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  color: #212529;
+  border: none;
+  border-bottom: 1px solid #7B7B7C;
+  padding: 1.2rem 0 0.3rem 0;
+  box-shadow: none;
+  padding-right: 0.25rem;
+  text-align: left;
 }
