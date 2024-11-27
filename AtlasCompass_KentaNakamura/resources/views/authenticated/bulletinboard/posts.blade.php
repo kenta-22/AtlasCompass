@@ -5,19 +5,26 @@
   <div class="post_view w-75 mt-5">
     @foreach($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
-      <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
-      <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
-      <div class="post_bottom_area d-flex justify-content-end pr-2">
-        <div class="d-flex post_status gap-5">
-          <div class="mr-5">
-            <i class="fa fa-comment" style="color:#919191;"></i><span class=""> {{ $post->comments_count->count() }}</span>
-          </div>
-          <div>
-            @if(Auth::user()->is_Like($post->id))
-            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"> {{ $post->likes_count }}</span></p>
-            @else
-            <p class="m-0"><i class="fa-regular fa-heart like_btn" post_id="{{ $post->id }}" style="color:#919191;"></i><span class="like_counts{{ $post->id }}"> {{ $post->likes_count }}</span></p>
-            @endif
+      <p class="post-name"><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
+      <p class="post-title"><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          @foreach($post->subCategories as $subCategory)
+          <p class="mb-0 post-subCategory">{{ $subCategory->sub_category }}</p>
+          @endforeach
+        </div>
+        <div class="post_bottom_area d-flex justify-content-end pr-2">
+          <div class="d-flex post_status gap-5">
+            <div class="mr-5">
+              <i class="fa fa-comment" style="color:#919191;"></i><span class=""> {{ $post->comments_count->count() }}</span>
+            </div>
+            <div>
+              @if(Auth::user()->is_Like($post->id))
+              <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"> {{ $post->likes_count }}</span></p>
+              @else
+              <p class="m-0"><i class="fa-regular fa-heart like_btn" post_id="{{ $post->id }}" style="color:#919191;"></i><span class="like_counts{{ $post->id }}"> {{ $post->likes_count }}</span></p>
+              @endif
+            </div>
           </div>
         </div>
       </div>

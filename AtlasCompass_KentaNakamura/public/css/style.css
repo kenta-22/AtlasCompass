@@ -171,8 +171,26 @@ li {
   border-radius: 10px;
 }
 
+.post-name {
+  color: #919191;
+  font-weight: 700;
+}
+
+.post-title a {
+  color: #000;
+  font-weight: 700;
+}
+
 .post_bottom_area {
   justify-content: space-between;
+}
+
+.post-subCategory {
+  display: block;
+  color: #fff;
+  background-color: #4DA6CE;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.5rem;
 }
 
 .like_btn,
