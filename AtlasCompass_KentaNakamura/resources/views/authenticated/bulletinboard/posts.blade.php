@@ -16,13 +16,13 @@
         <div class="post_bottom_area d-flex justify-content-end pr-2">
           <div class="d-flex post_status gap-5">
             <div class="mr-5">
-              <i class="fa fa-comment" style="color:#919191;"></i><span class=""> {{ $post->comments_count->count() }}</span>
+              <i class="fa fa-comment fa-fw" style="color:#919191;"></i><span class="ml-5">{{ $post->comments_count->count() }}</span>
             </div>
             <div>
               @if(Auth::user()->is_Like($post->id))
-              <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"> {{ $post->likes_count }}</span></p>
+              <i class="fas fa-heart un_like_btn fa-fw" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }} ml-5">{{ $post->likes_count }}</span>
               @else
-              <p class="m-0"><i class="fa-regular fa-heart like_btn" post_id="{{ $post->id }}" style="color:#919191;"></i><span class="like_counts{{ $post->id }}"> {{ $post->likes_count }}</span></p>
+              <i class="fas fa-heart like_btn fa-fw" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{ $post->likes_count }}</span>
               @endif
             </div>
           </div>

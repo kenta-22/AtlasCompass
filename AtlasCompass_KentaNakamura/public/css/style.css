@@ -193,6 +193,10 @@ li {
   border-radius: 0.5rem;
 }
 
+.like_btn {
+  color: #919191;
+}
+
 .like_btn,
 .un_like_btn {
   cursor: pointer;
