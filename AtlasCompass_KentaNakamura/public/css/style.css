@@ -189,7 +189,7 @@ li {
 .post-subCategory {
   display: block;
   color: #fff;
-  background-color: #4DA6CE;
+  background-color: #03AAD2;
   padding: 0.3rem 0.7rem;
   border-radius: 0.5rem;
 }
@@ -272,7 +272,7 @@ li {
 
 /* 掲示板　カテゴリー */
 .post-btn {
-  background-color: #4DA6CE !important;
+  background-color: #03AAD2 !important;
   border-radius: 0.5rem !important;
   width: 100%;
   color: #fff !important;
@@ -287,8 +287,8 @@ li {
 }
 
 .search-btn {
-  background-color: #4DA6CE;
-  border: 1px solid #4DA6CE;
+  background-color: #03AAD2;
+  border: 1px solid #03AAD2;
   border-radius: 0 0.5rem 0.5rem 0;
   padding: .375rem .75rem;
   color: #fff;
@@ -332,13 +332,10 @@ li {
 .reserve_users_area {
   display: flex;
   flex-wrap: wrap;
-  width: 800px;
-  margin: 10px auto;
-  height: 80vh;
-  overflow: scroll;
-  padding: 10px;
-  background: #FFF;
-  border-radius: 5px;
+  row-gap: 1.5rem;
+  column-gap: 1rem;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .reserve_users_area span {
@@ -346,17 +343,45 @@ li {
 }
 
 .one_person {
-  width: 250px;
-  height: 250px;
+  width: 230px;
+  height: 230px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
 }
 
-.search_conditions span {
-  cursor: pointer;
+.one_person div {
+  margin-bottom: 0.2rem;
 }
 
-.search_conditions_inner {
-  display: none;
-  background: #FFF;
+.free_word {
+  border: none;
+  border-radius: 5px;
+  background-color: #E1E5E8;
+  padding: 0.5rem;
+}
+
+.search-sort {
+  border: none;
+  border-radius: 5px;
+  background-color: #E1E5E8;
+  padding: 0.2rem;
+}
+
+.user_search_btn {
+  width: 100%;
+  border: none;
+  border-radius: 0.5rem !important;
+  background-color: #03AAD2 !important;
+  color: #fff !important;
+}
+
+.user_reset_btn {
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  color: #03AAD2;
+  width: 100%;
 }
 
 .subject_edit_btn {
@@ -403,7 +428,7 @@ li {
   outline: none !important;
 }
 
-.accordion-body {
+.sub_categories {
   padding: 0 1.8rem 0 1.25rem !important;
 }
 
