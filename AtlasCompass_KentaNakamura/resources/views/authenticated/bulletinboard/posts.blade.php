@@ -50,7 +50,7 @@
           @foreach($categories as $category)
           <div class="accordion-item main_categories" category_id="{{ $category->id }}">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $category->id }}" aria-expanded="true" aria-controls="collapse{{ $category->id }}">
+              <button class="accordion-button collapsed category_sort_btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $category->id }}" aria-expanded="true" aria-controls="collapse{{ $category->id }}">
                 {{ $category->main_category }}
               </button>
             </h2>

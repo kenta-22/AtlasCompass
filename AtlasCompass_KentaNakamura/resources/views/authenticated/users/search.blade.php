@@ -10,7 +10,7 @@
       </div>
       <div>
         <span style="color:#999;">名前 : </span>
-        <a href="{{ route('user.profile', ['id' => $user->id]) }}">
+        <a href="{{ route('user.profile', ['id' => $user->id]) }}" style="color:#03AAD2; font-weight:700;">
           <span>{{ $user->over_name }}</span>
           <span>{{ $user->under_name }}</span>
         </a>
