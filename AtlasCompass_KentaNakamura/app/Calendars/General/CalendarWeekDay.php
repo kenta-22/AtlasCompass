@@ -53,7 +53,7 @@ class CalendarWeekDay{
 
     $html = [];
     if($ymd <= $toDay){
-      $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px; color:#212529;">受付終了</p>';
+      $html[] = '<p class="m-auto p-0 w-75" style="font-size:14px; color:#212529;">受付終了</p>';
       $html[] = '<input type="hidden" name="getPart[]" form="reserveParts">';
     }else{
       $html[] = '<select name="getPart[]" class="border-primary" style="width:70px; border-radius:5px;" form="reserveParts">';

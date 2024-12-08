@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="vh-100 border">
-  <div class="top-text">
+  <div class="top-text fs-5">
     <p>自分のプロフィール</p>
   </div>
   <div class="top_area w-75 m-auto pt-5">
