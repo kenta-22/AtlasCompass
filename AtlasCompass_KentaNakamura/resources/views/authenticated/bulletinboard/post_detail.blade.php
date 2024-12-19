@@ -53,6 +53,9 @@
   <div class="w-50 p-3">
     <div class="comment_container m-5">
       <div class="comment_area p-3">
+        @if($errors->first('comment'))
+        <span class="error_message">{{ $errors->first('comment') }}</span>
+        @endif
         <p class="m-0">コメントする</p>
         <textarea class="w-100 p-1 d-block" name="comment" form="commentRequest"></textarea>
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">

@@ -13,6 +13,7 @@ use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
 use App\Http\Requests\BulletinBoard\MainCategoryRequest;
 use App\Http\Requests\BulletinBoard\SubCategoryRequest;
+use App\Http\Requests\BulletinBoard\CommentRequest;
 
 
 use Auth;
@@ -113,7 +114,7 @@ class PostsController extends Controller
     }
 
     // コメント投稿
-    public function commentCreate(Request $request){
+    public function commentCreate(CommentRequest $request){
         PostComment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),
